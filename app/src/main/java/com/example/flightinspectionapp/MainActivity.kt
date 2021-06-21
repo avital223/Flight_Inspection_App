@@ -9,22 +9,22 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.flightinspectionapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var databinding: ActivityMainBinding
+    val joystick: Joystick = Joystick()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        databinding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         setContentView(R.layout.activity_main)
-//
         val mainViewModel = ViewModelProvider(this).get(ViewModelFlight::class.java)
-//        databinding.viewmodel = mainViewModel
-//        databinding.lifecycleOwner = this
-
         DataBindingUtil.setContentView<ActivityMainBinding>(
             this, R.layout.activity_main
         ).apply {
             this.lifecycleOwner = this@MainActivity
             this.viewmodel = mainViewModel
         }
-
+        joystick.service?.value = object : Service {
+            override fun onChange(x: Float, y: Float) {
+                mainViewModel.changeAileron(x)
+                mainViewModel.changeElevator(y)
+            }
+        }
     }
 }
