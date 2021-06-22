@@ -30,9 +30,13 @@ class ModelFlight {
             try {
                 if (_ip.value != ip && _port.value != port) {
                     socket.postValue(Socket(ip, port))
-                    out.postValue(PrintWriter(socket.value!!.getOutputStream(), true))
-                    _ip.postValue(ip)
-                    _port.postValue(port)
+                    if(socket.value?.isConnected == true){
+                        println("YAYYYYYYYYYYYYYYYY!!!!!!!!!!!!!!!!!!!!!")
+                        out.postValue(PrintWriter(socket.value!!.getOutputStream(), true))
+                        _ip.postValue(ip)
+                        _port.postValue(port)
+                    }
+
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

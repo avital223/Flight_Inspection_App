@@ -55,25 +55,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent" />
-        <!--        <com.example.flightinspectionapp.Joystick-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="match_parent" />-->
-        <!--        <shape-->
-        <!--            android:layout_width="300dp"-->
-        <!--            android:layout_height="300dp"-->
-        <!--            android:shape="oval"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent"-->
-        <!--            app:layout_constraintVertical_bias="0.74">-->
 
-        <!--            <solid android:color="#673AB7" />-->
+        <SeekBar
+            android:id="@+id/seekBar1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="200dp"
+            android:max="100"
+            android:progress="0"
+            android:indeterminate="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="40dp" />
 
-        <!--            <size-->
-        <!--                android:width="120dp"-->
-        <!--                android:height="120dp" />-->
-        <!--        </shape>-->
--->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
