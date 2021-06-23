@@ -1,6 +1,7 @@
 package com.example.flightinspectionapp
 
 import androidx.lifecycle.MutableLiveData
+import com.google.android.material.snackbar.Snackbar
 import java.io.PrintWriter
 import java.net.Socket
 import java.util.concurrent.BlockingQueue
@@ -30,13 +31,12 @@ class ModelFlight {
             try {
                 if (_ip.value != ip && _port.value != port) {
                     socket.postValue(Socket(ip, port))
-                    if(socket.value?.isConnected == true){
-                        println("YAYYYYYYYYYYYYYYYY!!!!!!!!!!!!!!!!!!!!!")
+                    if (socket.value?.isConnected == true) {
+                        println("connected")
                         out.postValue(PrintWriter(socket.value!!.getOutputStream(), true))
                         _ip.postValue(ip)
                         _port.postValue(port)
                     }
-
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

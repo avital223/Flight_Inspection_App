@@ -16,16 +16,18 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
+
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="588dp"
+            android:layout_marginBottom="512dp"
             android:hint="Enter IP"
             android:text="@={viewmodel._ipServer}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.287"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintWidth_percent="0.8" />
 
@@ -36,11 +38,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="516dp"
+            android:layout_marginBottom="432dp"
             android:hint="Enter port"
             android:text="@={viewmodel.port}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.287"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintWidth_percent="0.8" />
 
@@ -48,7 +51,7 @@
             android:id="@+id/buttonConnect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="428dp"
+            android:layout_marginBottom="328dp"
             android:onClick="@{() -> viewmodel.connect()}"
             android:text="Connect"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -56,20 +59,63 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <SeekBar
-            android:id="@+id/seekBar1"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="200dp"
-            android:max="100"
-            android:progress="0"
-            android:indeterminate="false"
+        <FrameLayout
+            android:id="@+id/back"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginBottom="112dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="40dp" />
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent">
 
+            <View
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:background="@drawable/joystick_backgroud" />
+            <View
+                android:id="@+id/joyStick"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="75dp"
+                android:layout_marginLeft="75dp"
+                android:layout_marginTop="75dp"
+                android:background="@drawable/joystick" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="39dp"
+            android:layout_height="281dp"
+            android:layout_marginBottom="84dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.043"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <SeekBar
+                android:id="@+id/camera_sb_expose"
+                android:layout_width="300dp"
+                android:max="100"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:progress="@={viewmodel.throttle}"
+                android:rotation="270" />
+
+        </FrameLayout>
+
+
+        <SeekBar
+            android:id="@+id/playback_speed_seek_bar"
+            android:layout_width="300dp"
+            android:max="100"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="48dp"
+            android:progress="@={viewmodel.rudder}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.612"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

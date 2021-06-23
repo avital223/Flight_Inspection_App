@@ -1,11 +1,8 @@
 package com.example.flightinspectionapp
 
-import android.widget.SeekBar
-import android.widget.Toast
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.databinding.Observable.OnPropertyChangedCallback
-import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
@@ -22,6 +19,29 @@ class ViewModelFlight : ViewModel(), Observable {
         modelFlight.connectToFlight(_ipServer.value.toString(), port.value.toString().toInt())
     }
 
+    private var rudder = 0
+
+    @Bindable
+    fun getRudder(): Int {
+        return rudder
+    }
+
+    fun setRudder(speed: Int) {
+        rudder = speed
+        changeRudder((speed.toFloat() - 50) / 100)
+    }
+
+    private var throttle = 0
+
+    @Bindable
+    fun getThrottle(): Int {
+        return throttle
+    }
+
+    fun setThrottle(speed: Int) {
+        throttle = speed
+        changeThrottle((speed.toFloat()) / 100)
+    }
 
     fun changeAileron(x: Float) {
         modelFlight.setAileron(x)
