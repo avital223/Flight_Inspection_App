@@ -53,3 +53,9 @@ The way that the view works is that the `MainActivity` is responsible for the di
 `MainActivity` also injects to the `Joystick` the  `Service.onChange` function. that way the joystick itself doesn't know the ViewModel and can be "taken out" and used in other projects.
 
 To create a `Joystick` all you need is to implement the `Service` interface.
+
+------
+
+#####authors
+* Avital Livshitz
+* Michelle Rabkin
