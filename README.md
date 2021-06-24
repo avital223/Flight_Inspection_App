@@ -55,6 +55,14 @@ The way that the view works is that the `MainActivity` is responsible for the di
 To create a `Joystick` all you need is to implement the `Service` interface.
 
 ------
+#### Dependecies
+
+`kapt "com.android.databinding:compiler:3.4.0"` (for databinding)
+
+#### Implementations
+
+`id 'kotlin-kapt'` (for databinding)
+
 
 ##### Authors
 * Avital Livshitz
