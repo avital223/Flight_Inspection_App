@@ -56,6 +56,6 @@ To create a `Joystick` all you need is to implement the `Service` interface.
 
 ------
 
-#####authors
+##### Authors
 * Avital Livshitz
 * Michelle Rabkin
