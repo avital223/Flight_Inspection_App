@@ -63,6 +63,9 @@ To create a `Joystick` all you need is to implement the `Service` interface.
 
 `id 'kotlin-kapt'` (for databinding)
 
+#### UML
+
+
 
 ##### Authors
 * Avital Livshitz
