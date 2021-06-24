@@ -55,18 +55,18 @@ The way that the view works is that the `MainActivity` is responsible for the di
 To create a `Joystick` all you need is to implement the `Service` interface.
 
 ------
-#### Dependecies
+##### Dependecies
 
 `kapt "com.android.databinding:compiler:3.4.0"` (for databinding)
 
-#### Implementations
+##### Implementations
 
 `id 'kotlin-kapt'` (for databinding)
 
-#### UML
+##### UML
 
+https://github.com/avital223/Remote_Control_Joystick_App/blob/main/Remote%20Control%20Joystick%20App.pdf
 
-
-##### Authors
+#### Authors
 * Avital Livshitz
 * Michelle Rabkin
