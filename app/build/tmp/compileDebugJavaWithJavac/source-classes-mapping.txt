@@ -1,6 +1,0 @@
-com/example/flightinspectionapp/BuildConfig.java
- com.example.flightinspectionapp.BuildConfig
-com/example/flightinspectionapp/DataBindingTriggerClass.java
- com.example.flightinspectionapp.DataBindingTriggerClass
-com/example/flightinspectionapp/databinding/ActivityMainBinding.java
- com.example.flightinspectionapp.databinding.ActivityMainBinding

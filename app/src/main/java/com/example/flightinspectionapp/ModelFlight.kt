@@ -1,5 +1,7 @@
 package com.example.flightinspectionapp
 
+import androidx.lifecycle.MutableLiveData
+import com.google.android.material.snackbar.Snackbar
 import java.io.PrintWriter
 import java.net.Socket
 import java.util.concurrent.BlockingQueue
@@ -7,10 +9,12 @@ import java.util.concurrent.LinkedBlockingQueue
 
 class ModelFlight {
     private val dispatchQueue: BlockingQueue<Runnable> = LinkedBlockingQueue<Runnable>()
-    private val socket = Socket("192.168.1.1", 6400)
-    private val out = PrintWriter(socket.getOutputStream(), true)
+    private val socket = MutableLiveData<Socket>()
+    private val out = MutableLiveData<PrintWriter>()
+    private val _ip = MutableLiveData<String>()
+    private val _port = MutableLiveData<Int>()
 
-    init{
+    init {
         Thread {
             while (true) {
                 try {
@@ -22,33 +26,51 @@ class ModelFlight {
         }.start()
     }
 
+    fun connectToFlight(ip: String, port: Int) {
+        dispatchQueue.put(Runnable {
+            try {
+                if (_ip.value != ip && _port.value != port) {
+                    socket.postValue(Socket(ip, port))
+                    if (socket.value?.isConnected == true) {
+                        println("connected")
+                        out.postValue(PrintWriter(socket.value!!.getOutputStream(), true))
+                        _ip.postValue(ip)
+                        _port.postValue(port)
+                    }
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        })
+    }
+
     fun setAileron(v: Float) {
         dispatchQueue.put(Runnable {
-            out.print("set /controls/flight/aileron $v\r\n")
-            out.flush()
+            out.value?.print("set /controls/flight/aileron $v\r\n")
+            out.value?.flush()
         })
 
     }
 
     fun setElevator(v: Float) {
         dispatchQueue.put(Runnable {
-            out.print("set /controls/flight/elevator $v\r\n")
-            out.flush()
+            out.value?.print("set /controls/flight/elevator $v\r\n")
+            out.value?.flush()
         })
     }
 
     fun setRudder(v: Float) {
         dispatchQueue.put(Runnable {
-            out.print("set /controls/flight/rudder $v\r\n")
-            out.flush()
+            out.value?.print("set /controls/flight/rudder $v\r\n")
+            out.value?.flush()
         })
 
     }
 
     fun setThrottle(v: Float) {
         dispatchQueue.put(Runnable {
-            out.print("set /controls/engines/current-engine/throttle $v\r\n")
-            out.flush()
+            out.value?.print("set /controls/engines/current-engine/throttle $v\r\n")
+            out.value?.flush()
         })
     }
 
