@@ -22,7 +22,7 @@ You can find in this app a joystick that controls the `aileron` and `elevator`, 
 This app is built-in MVVM Architecture:
 
 * **View**
-  * MainActivity - is responsible for the _avtivity_main.xml_ file to upload. It also connects the Joystick the ViewModel
+  * MainActivity - is responsible for the _avtivity_main.xml_ file to upload. It also connects the Joystick to the ViewModel
   * Joystick - is responsible for the joystick to move and send in the end to the `Service.onChange` the changes that happened. (if the joystick moved)
 * **Model** 
   * ModelFlight - is responsible to connect to the FlightGear and send requests.
