@@ -19,7 +19,7 @@ class ViewModelFlight : ViewModel(), Observable {
         modelFlight.connectToFlight(_ipServer.value.toString(), port.value.toString().toInt())
     }
 
-    private var rudder = 0
+    private var rudder = 50
 
     @Bindable
     fun getRudder(): Int {

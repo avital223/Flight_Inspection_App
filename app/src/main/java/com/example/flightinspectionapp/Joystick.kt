@@ -25,7 +25,7 @@ class Joystick(_s: Service) : View.OnTouchListener {
             }
             MotionEvent.ACTION_MOVE -> {
                 var _x = (event.rawX + x - start_x) / (start_x)
-                var _y = (event.rawY + y - start_y) / (start_y)
+                var _y = (event.rawY + y - start_y) / (start_y) * -1
                 if (checkInCircle(_x, _y)) {
                     view?.animate()?.x(event.rawX + x)?.y(event.rawY + y)
                         ?.setDuration(0)?.start()
@@ -42,6 +42,7 @@ class Joystick(_s: Service) : View.OnTouchListener {
 
             }
             MotionEvent.ACTION_UP -> {
+                // if you want to get the joystick back to the center
                 view?.animate()?.x(start_x)?.y(start_y)
                     ?.setDuration(500)?.start()
                 service.onChange(0f, 0f)
