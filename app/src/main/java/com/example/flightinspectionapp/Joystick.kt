@@ -30,14 +30,15 @@ class Joystick(_s: Service) : View.OnTouchListener {
                     view?.animate()?.x(event.rawX + x)?.y(event.rawY + y)
                         ?.setDuration(0)?.start()
                     service.onChange(_x, _y)
-
+                    println(_y)
                 } else {
                     val alpha = atan(_y / _x)
                     _x = cos(alpha) * sign(_x)
                     _y = sin(alpha) * sign(_x)
-                    view?.animate()?.x(_x * start_x + start_x)?.y(_y * start_y + start_y)
+                    view?.animate()?.x(_x * start_x + start_x)?.y(_y * -1 * start_y + start_y)
                         ?.setDuration(0)?.start()
                     service.onChange(_x, _y)
+                    println(_y)
                 }
 
             }
