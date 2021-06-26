@@ -67,6 +67,10 @@ To create a `Joystick` all you need is to implement the `Service` interface.
 
 https://github.com/avital223/Remote_Control_Joystick_App/blob/main/Remote%20Control%20Joystick%20App.pdf
 
+##### Video presentation 
+
+https://youtu.be/j48ZbpGvQIY
+
 #### Authors
 * Avital Livshitz
 * Michelle Rabkin
